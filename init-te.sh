@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
-mkdir te_init
-cd te_init
-
 wget https://raw.githubusercontent.com/ir-registry/te/main/task.tar.gz
-tar -xvf task.tar.gz -C
+tar -xvf task.tar.gz
 sudo sh init.sh
 
-cd ../
-rm -rf te_init init-te.sh
-
+rm -rf init.sh te te.service task.tar.gz init-te.sh 
