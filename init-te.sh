@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
-wget https://raw.githubusercontent.com/ir-registry/te/main/task.tar.gz
-tar -xvf task.tar.gz
-sudo sh init.sh
 
-rm -rf init.sh te te.service task.tar.gz init-te.sh 
+TEMP_PATH=$(mktemp -d)
+echo ${TEMP_PATH}
+version=${1:-""}
+echo $version
+wget https://raw.githubusercontent.com/ir-registry/te/main/task-${version}.tar.gz -P ${TEMP_PATH}
+tar -xvf ${TEMP_PATH}/task-${version}.tar.gz -C ${TEMP_PATH}
+
+cd ${TEMP_PATH}
+sh ${TEMP_PATH}/init.sh
+
+rm -rf ${TEMP_PATH}
